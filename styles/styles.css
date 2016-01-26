@@ -1,7 +1,7 @@
-a:link {color: black;}      /* unvisited link */
-a:visited {color: black;}   /* visited link */
-a:hover {color: black;}     /* mouse over link */
-a:active {color: black;}    /* selected link */
+a:link {color: inherit;}      /* unvisited link */
+a:visited {color: inherit;}   /* visited link */
+a:hover {color: inherit;}     /* mouse over link */
+a:active {color: inherit;}    /* selected link */
 
 html {
 	font-family : "Verdana";
@@ -27,20 +27,26 @@ button, input, span#first {
 	height : 20%;
 }
 
-#board div.word {
+.word {
 	position : relative;
 	text-align : center;
 	vertical-align : middle;
 	cursor : pointer;
-	border : 2px #DDDDDD solid;
 	border-radius : 5px;
-	font-weight : bold;
 	width : 19%;
 	height : 99%;
 	display : inline-block;
 	line-height : 99%;
-
+	border : 6px dotted #DDD;
+	box-sizing: border-box;
 }
+.team-red  { color: #c00; }
+.team-blue { color: #099; }
+.word.red    { background-color: #f33; font-weight: bold  ; color: black; border: 6px solid #c00; }
+.word.yellow { background-color: #ff0; font-style : italic; color: black; border: 6px dashed #880; }
+.word.blue   { background-color: #3ee; font-weight: bold  ; color: black; border: 6px solid #00c; }
+.word.green  { background-color: #090; font-weight: bold  ; color: black; border: 6px inset #0c0; }
+.word.black  { background-color: #000; font-weight: bold  ; color: white; border: 6px solid #DDD; }
 
 #board div.word div {
 

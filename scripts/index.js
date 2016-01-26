@@ -13,11 +13,11 @@ var NUMBER_OF_WORDS = 25;
 var spyMasterMode = false;
 var sessionData = [];
 
-var COLOR_RED = "#ff0000";
-var COLOR_YELLOW = "#ffff00";
-var COLOR_BLUE = "#00eeee";
-var COLOR_BLACK = "#808080";
-var COLOR_GREEN = "#009000";
+var RED = "red";
+var YELLOW = "yellow";
+var BLUE = "blue";
+var BLACK = "black";
+var GREEN = "green";
 
 function fire(){
 	//get seed and set the seed for randomizer
@@ -62,29 +62,29 @@ function createNewGame(){
 
 	//create teams
 	for(var i = 0; i < 8; i++){
-		teams.push(COLOR_RED);
-		teams.push(COLOR_BLUE);
+		teams.push(RED);
+		teams.push(BLUE);
 	}
 
 	// one extra for one of the teams
 	document.getElementById("first").innerHTML = " starts (9).";
 	if(Math.floor(Math.random() * data.length) % 2 === 0){
-		teams.push(COLOR_RED);
-		document.getElementById("team").style.color = COLOR_RED;
+		teams.push(RED);
+		document.getElementById("team").className = "team-" + RED;
 		document.getElementById("team").innerHTML = "RED";
 	}else{
-		teams.push(COLOR_BLUE);
-		document.getElementById("team").style.color = COLOR_BLUE;
+		teams.push(BLUE);
+		document.getElementById("team").className = "team-" + BLUE;
 		document.getElementById("team").innerHTML = "BLUE";
 	}
 	
 	// add neturals 
 	for(var i = 0; i < 7; i++){
-		teams.push(COLOR_YELLOW);
+		teams.push(YELLOW);
 	}
 
 	// push the assasin
-	teams.push(COLOR_BLACK);
+	teams.push(BLACK);
 
 	//shuffle teams
 	shuffle(teams);
@@ -97,21 +97,15 @@ function clicked(value){
 		var word = wordsSelected[value];
 		if(document.getElementById("confirm").checked){
 			if (window.confirm("Are sure you want to select '"+word+"'?")){
-				document.getElementById(value).style.backgroundColor = teams[value];
-				if (teams[value] == "black"){
-					document.getElementById(value).style.color = "white";
-				}
+				document.getElementById(value).className = "word " + teams[value];
 			}
 		} else {
-			document.getElementById(value).style.backgroundColor = teams[value];
-			if (teams[value] == "black"){
-				document.getElementById(value).style.color = "white";
-			}
+      document.getElementById(value).className = "word " + teams[value];
 		}
 			
 	} else {
 		//spymaster mode
-			document.getElementById(value).style.backgroundColor = COLOR_GREEN;	
+			document.getElementById(value).className = "word " + GREEN;
 	}
 }
 
@@ -119,10 +113,7 @@ function spyMaster(){
 	//TODO: randomize or organize tiles for easier comparing
 	spyMasterMode = true;
 	for(var i = 0; i < NUMBER_OF_WORDS; i++){
-		document.getElementById(i).style.backgroundColor = teams[i];
-		if (teams[i] == "black"){
-			document.getElementById(i).style.color = "white";
-		}
+		document.getElementById(i).className = "word " + teams[i];
 	}
 }
 
