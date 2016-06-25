@@ -4,8 +4,6 @@ Notes:
 'seedrandom' is also imported from html. it gives deterministic random #s based on a seed set in fire()
 */
 
-/*jshint -W004 */
-
 
 var wordsSelected = [];
 var teams = [];
@@ -25,7 +23,12 @@ function fire(){
 	Math.seedrandom(seed);
 
 	//reset state to pristine state
-	sessionData = data.slice(0);
+	if(document.getElementById("movie").checked) {
+		sessionData = movieData.slice(0);
+	}else {
+		sessionData = data.slice(0);	
+	}
+	
 	wordsSelected = [];
 	teams = [];
 	spyMasterMode = false;
@@ -57,7 +60,7 @@ function createNewGame(){
 	}
 //<a href="#"><span class="ada">Washington stimulates economic growth </span>Read me</a>
 	for (var i = 0; i < trs.length; i++){
-		document.getElementById("board").innerHTML += '<div class="row">'+trs[i]+'</div>';
+		document.getElementById("board").innerHTML += '<div class="row">'+trs[i]+'</div>'
 	}
 
 	//create teams
@@ -145,4 +148,4 @@ document.getElementById('seed').onkeypress = function(e){
       fire();
       return false;
     }
-};
+  }

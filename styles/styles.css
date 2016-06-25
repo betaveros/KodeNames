@@ -84,6 +84,13 @@ button, input, span#first {
 	float : right;
 }
 
+#movie {
+	float : right;
+}
+#movieCheck {
+	float : right;	
+}
+
 #confirmText {
 	float : right;	
 }
